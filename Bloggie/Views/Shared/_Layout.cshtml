@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Bloggie.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body class="@ViewBag.BodyClass">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow">
             <div class="container">
@@ -44,7 +44,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted bg-dark">
+    <footer class="footer text-muted bg-dark">
         <div class="container">
             &copy; 2025 - Bloggie - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

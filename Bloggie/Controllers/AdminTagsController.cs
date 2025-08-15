@@ -1,10 +1,19 @@
-﻿using Bloggie.Models.ViewModels;
+﻿using Bloggie.Data;
+using Bloggie.Models.Domain;
+using Bloggie.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bloggie.Controllers
 {
     public class AdminTagsController : Controller
     {
+        private readonly BloggieDbContext _bloggieDbContext;
+
+        public AdminTagsController(BloggieDbContext bloggieDbContext)
+        {
+            _bloggieDbContext = bloggieDbContext;
+        }
+
         [HttpGet]
         public IActionResult Add()
         {
@@ -14,8 +23,15 @@ namespace Bloggie.Controllers
         [HttpPost]
         public IActionResult Add(AddTagRequest addTagRequest)
         {
-            var name = addTagRequest.name;
-            var displayName = addTagRequest.displayName;
+            //mapping AddTagRequest to Tag domain model
+            var tag = new Tag
+            {
+                Name = addTagRequest.name,
+                DisplayName = addTagRequest.displayName,
+            };
+
+            _bloggieDbContext.Tags.Add(tag);
+            _bloggieDbContext.SaveChanges();
 
             return View("Add");
         }

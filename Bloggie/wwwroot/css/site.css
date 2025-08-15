@@ -20,3 +20,7 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.home-index-bg {
+    background-color: #7DF9FF; /* Light gray for Home/Index */
+}

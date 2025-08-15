@@ -15,6 +15,7 @@ namespace Bloggie.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.BodyClass = "home-index-bg";
             return View();
         }
 
