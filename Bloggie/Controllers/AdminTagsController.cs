@@ -17,6 +17,7 @@ namespace Bloggie.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.BodyClass = "adminTag-add-bg";
             return View();
         }
 
