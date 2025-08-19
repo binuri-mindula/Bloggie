@@ -1,4 +1,5 @@
 using Bloggie.Data;
+using Bloggie.Repositories;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;  // Add this using statement
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure; // Add this using statement
@@ -16,6 +17,8 @@ namespace Bloggie
 
             // Get the connection string from appsettings.json
             var connectionString = builder.Configuration.GetConnectionString("BloggieDbConnectionString");
+
+            builder.Services.AddScoped<ITagRepository, TagRepository>();
 
             // Configure MySQL with Pomelo.EntityFrameworkCore.MySql
             builder.Services.AddDbContext<BloggieDbContext>(options =>
