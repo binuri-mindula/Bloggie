@@ -21,6 +21,7 @@
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Display Name</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,6 +31,10 @@
                                     <td class="fw-semibold">@tag.Id</td>
                                     <td>@tag.Name</td>
                                     <td>@tag.DisplayName</td>
+                                    <td>
+                                        <a asp-area="" asp-controller="AdminTags" asp-action="Edit" asp-route-id="@tag.Id" class="btn btn-success mx-4">Edit</a>
+                                        <button class="btn btn-secondary">Delete</button>
+                                    </td>
                                 </tr>
                             }
                         </tbody>

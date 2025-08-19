@@ -1,0 +1,29 @@
+﻿@model Bloggie.Models.ViewModels.EditTagRequest
+@{
+}
+
+<div class="py-2">
+	<div class="container">
+		<h1 class="text-center mt-2">Edit Tag - Admin Functionality</h1>
+	</div>
+</div>
+
+<div class="container shadow-lg border-secondary py-5 align-content-center bg-secondary bg-opacity-25 border-2 rounded-2 w-25 mt-5" >
+	<form method="post" class="mx-10 align-content-center px-4">
+		<div class="mb-3 w-100">
+			<label class="form-label">Id</label>
+			<input type="text" class="form-control shadow-sm" id="id" placeholder="id" asp-for="Id" readonly/>
+		</div>
+		<div class="mb-3 w-100">
+			<label class="form-label">Name</label>
+			<input type="text" class="form-control shadow-sm" id="name" placeholder="Name" asp-for="name"/>
+		</div>
+		<div class="mb-3 w-100">
+			<label class="form-label">Display Name</label>
+			<input type="text" class="form-control shadow-sm" id="displayName" placeholder="Display Name" asp-for="displayName"/>
+		</div>
+		<div class="mb-2 mt-4">
+			<button type="submit" class="btn btn-outline-primary">Update</button>
+		</div>
+	</form>
+</div>
