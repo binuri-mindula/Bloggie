@@ -92,5 +92,20 @@ namespace Bloggie.Controllers
             //show error message
             return RedirectToAction("Edit", new { id = editTagRequest.Id });
         }
+
+        [HttpPost]
+        public IActionResult Delete(Guid id)
+        {
+            var tag = _bloggieDbContext.Tags.Find(id);
+            if (tag != null)
+            {
+                _bloggieDbContext.Tags.Remove(tag);
+                _bloggieDbContext.SaveChanges();
+                //show success message
+                return RedirectToAction("List");
+            }
+            //show error message
+            return RedirectToAction("List", new { error = "Tag not found" });
+        }
     }
 }

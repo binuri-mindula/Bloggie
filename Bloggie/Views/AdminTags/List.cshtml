@@ -33,7 +33,10 @@
                                     <td>@tag.DisplayName</td>
                                     <td>
                                         <a asp-area="" asp-controller="AdminTags" asp-action="Edit" asp-route-id="@tag.Id" class="btn btn-success mx-4">Edit</a>
-                                        <button class="btn btn-secondary">Delete</button>
+                                        <form asp-area="" asp-controller="AdminTags" asp-action="Delete" asp-route-id="@tag.Id" method="post" style="display:inline;">
+	                                        <button type="submit" class="btn btn-outline-danger border-2">Delete</button>
+                                        </form>
+
                                     </td>
                                 </tr>
                             }
