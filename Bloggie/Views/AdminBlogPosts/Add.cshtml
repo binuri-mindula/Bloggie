@@ -1,0 +1,62 @@
+﻿@model Bloggie.Models.ViewModels.AddBlogPostRequest
+@{
+}
+
+<div class="py-3 bg-light border-bottom shadow-sm">
+	<div class="container">
+		<h1 class="text-center fw-bold text-primary">Add Blog Post</h1>
+		<p class="text-center text-muted">Admin Functionality - Manage blogs easily</p>
+	</div>
+</div>
+<div class="container shadow-lg border-secondary py-5 align-content-center bg-secondary bg-opacity-25 border-2 rounded-2 w-full mt-5">
+    <form method="post" class="mx-10 align-content-center px-4">
+        <div class="mb-3 w-100">
+            <label class="form-label">Heading</label>
+            <input type="text" class="form-control shadow-sm" id="heading" placeholder="Heading" asp-for="Heading" />
+        </div>
+        <div class="mb-3 w-100">
+	        <label class="form-label">Page Title</label>
+	        <input type="text" class="form-control shadow-sm" id="pageTitle" placeholder="Page Title" asp-for="PageTitle" />
+        </div>
+        <div class="mb-3 w-100">
+            <label class="form-label">Content</label>
+            <textarea class="form-control shadow-sm" id="content" placeholder="Content" asp-for="Content"></textarea>
+        </div>
+        <div class="mb-3 w-100">
+            <label class="form-label">Short Description</label>
+            <textarea class="form-control shadow-sm" id="shortDescription" placeholder="Short Description" asp-for="ShortDescription"></textarea>
+
+        </div>
+        <div class="mb-3 w-100">
+	        <label class="form-label">Featured Image Url</label>
+	        <input type="text" class="form-control shadow-sm" id="featuredImageUrl" placeholder="Featured Image Url" asp-for="FeaturedImageUrl" />
+        </div>
+        <div class="mb-3 w-100">
+            <label class="form-label">Url Handle</label>
+	        <input type="text" class="form-control shadow-sm" id="urlHandle" placeholder="Url Handle" asp-for="UrlHandle" />
+        </div>
+        <div class="mb-3 w-100">
+	        <label class="form-label">PublishedDate</label>
+	        <input type="date" class="form-control shadow-sm" id="publishedDate" placeholder="Published Date" asp-for="PublishedDate" />
+        </div>
+        <div class="mb-3 w-100">
+	        <label class="form-label">Author</label>
+	        <input type="date" class="form-control shadow-sm" id="author" placeholder="Author" asp-for="Author" />
+        </div>
+       
+        <div class="form-check mb-3">
+	        <input class="form-check-input" type="checkbox" id="visible" asp-for="Visible">
+	        <label class="form-check-label">
+		        Is Visible?
+	        </label>
+        </div>
+        
+        <div class="mb-3 w-100">
+	        <label class="form-label">Tags</label>
+	        <select class="form-select shadow-sm" id="selectedTag" asp-items="@Model.Tags" asp-for="SelectedTag"></select>
+        </div>
+        <div class="mb-2 mt-4 w-100">
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+        </div>
+    </form>
+</div>
