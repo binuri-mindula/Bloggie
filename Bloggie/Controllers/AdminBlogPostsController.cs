@@ -83,7 +83,39 @@ namespace Bloggie.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
-            return View();
+            var blogPost = await _blogPostRepository.GetByIdAsync(id);
+            var tagsDomainModel = await _tagRepository.GetAllAsync();
+
+            if (blogPost != null)
+            {
+                var model = new EditBlogPostRequest
+                {
+                    Id = blogPost.Id,
+                    Heading = blogPost.Heading,
+                    PageTitle = blogPost.PageTitle,
+                    Content = blogPost.Content,
+                    ShortDescription = blogPost.ShortDescription,
+                    FeaturedImageUrl = blogPost.FeaturedImageUrl,
+                    UrlHandle = blogPost.UrlHandle,
+                    PublishedDate = blogPost.PublishedDate,
+                    Author = blogPost.Author,
+                    Visible = blogPost.Visible,
+                    Tags = tagsDomainModel.Select(tag => new SelectListItem
+                    {
+                        Text = tag.Name,
+                        Value = tag.Id.ToString(),
+
+                    }),
+                    SelectedTags = blogPost.Tags.Select(bpTag => bpTag.Id.ToString()).ToArray() // Check if the tag is already associated with the blog post
+
+                };
+
+                return View(model);
+            }
+
+            //map domain model to view model
+            
+            return View(null);
         }
     }
 }

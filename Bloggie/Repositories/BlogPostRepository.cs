@@ -16,9 +16,9 @@ namespace Bloggie.Repositories
             return await _bloggieDbContext.BlogPosts.Include(x => x.Tags).ToListAsync();
         }
 
-        public Task<BlogPost?> GetByIdAsync(Guid id)
+        public async Task<BlogPost?> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            return await _bloggieDbContext.BlogPosts.Include(x=>x.Tags).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<BlogPost> AddAsync(BlogPost blogPost)
