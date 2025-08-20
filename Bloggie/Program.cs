@@ -19,6 +19,7 @@ namespace Bloggie
             var connectionString = builder.Configuration.GetConnectionString("BloggieDbConnectionString");
 
             builder.Services.AddScoped<ITagRepository, TagRepository>();
+            builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
 
             // Configure MySQL with Pomelo.EntityFrameworkCore.MySql
             builder.Services.AddDbContext<BloggieDbContext>(options =>

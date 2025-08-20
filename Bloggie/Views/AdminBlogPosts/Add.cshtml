@@ -41,7 +41,7 @@
         </div>
         <div class="mb-3 w-100">
 	        <label class="form-label">Author</label>
-	        <input type="date" class="form-control shadow-sm" id="author" placeholder="Author" asp-for="Author" />
+	        <input type="text" class="form-control shadow-sm" id="author" placeholder="Author" asp-for="Author" />
         </div>
        
         <div class="form-check mb-3">
@@ -53,7 +53,7 @@
         
         <div class="mb-3 w-100">
 	        <label class="form-label">Tags</label>
-	        <select class="form-select shadow-sm" id="selectedTag" asp-items="@Model.Tags" asp-for="SelectedTag"></select>
+	        <select class="form-select shadow-sm" id="selectedTag" asp-items="@Model.Tags" asp-for="SelectedTags"></select>
         </div>
         <div class="mb-2 mt-4 w-100">
             <button type="submit" class="btn btn-outline-primary">Submit</button>
