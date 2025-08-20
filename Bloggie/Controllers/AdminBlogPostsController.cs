@@ -79,5 +79,11 @@ namespace Bloggie.Controllers
             var posts = await _blogPostRepository.GetAllAsync();
             return View(posts);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            return View();
+        }
     }
 }

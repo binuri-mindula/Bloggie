@@ -1,5 +1,6 @@
 ﻿using Bloggie.Data;
 using Bloggie.Models.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Bloggie.Repositories
 {
@@ -10,9 +11,9 @@ namespace Bloggie.Repositories
         {
             _bloggieDbContext = bloggieDbContext;
         }
-        public Task<IEnumerable<BlogPost>> GetAllAsync()
+        public async Task<IEnumerable<BlogPost>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _bloggieDbContext.BlogPosts.Include(x => x.Tags).ToListAsync();
         }
 
         public Task<BlogPost?> GetByIdAsync(Guid id)

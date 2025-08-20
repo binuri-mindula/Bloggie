@@ -1,5 +1,68 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Bloggie.Models.Domain.BlogPost>
 @{
 }
+<div class="py-3 bg-light border-bottom shadow-sm">
+    <div class="container">
+        <h1 class="text-center fw-bold text-primary">Get Blog Posts</h1>
+        <p class="text-center text-muted">Admin Functionality - Manage blogs easily</p>
+    </div>
+</div>
+
+<div class="container py-5">
+    @if (Model != null && Model.Any())
+    {
+        <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-body">
+                <h4 class="card-title mb-4 fw-semibold text-secondary">Blog List</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-primary text-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Heading</th>
+                                <th scope="col">Publish Date</th>
+                                <th scope="col">Author</th>
+                                <th scope="col">Is Visible</th>
+                                <th scope="col">Tags</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var blogPost in Model)
+                            {
+                                <tr>
+                                    <td class="fw-semibold">@blogPost.Id</td>
+                                    <td>@blogPost.Heading</td>
+                                    <td>@blogPost.PublishedDate</td>
+                                    <td>@blogPost.Author</td>
+                                    <td>@blogPost.Visible</td>
+                                    <td>
+	                                    <div class="d-flex">
+                                            @foreach (var tag in blogPost.Tags)
+                                            {
+	                                            <span class="badge bg-secondary me-1">@tag.Name</span>
+                                            }
+	                                    </div>
+                                    </td>
+                                    <td>
+                                       <a asp-area="" asp-controller="AdminBlogPosts" asp-action="Edit" asp-route-id="@blogPost.Id" class="btn btn-success mx-4">Edit</a>
+                                       @* <form asp-area="" asp-controller="AdminBlogPosts" asp-action="Delete" asp-route-id="@blogPost.Id" method="post" style="display:inline;">
+                                            <button type="submit" class="btn btn-outline-danger border-2">Delete</button>
+                                        </form>*@
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center rounded-3 shadow-sm">
+            No posts found. Please add some posts to display.
+        </div>
+    }
+</div>
