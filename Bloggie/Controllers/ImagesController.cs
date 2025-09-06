@@ -13,5 +13,11 @@ namespace Bloggie.Controllers
         {
             return Ok("This is Get image api call");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadAsync(IFormFile formFile)
+        {
+            return Ok("This is Post image api call");
+        }
     }
 }
