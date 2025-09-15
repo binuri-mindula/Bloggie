@@ -34,7 +34,7 @@
         </div>
         <div class="mb-3 w-100">
             <label class="form-label">Featured Image Url</label>
-            <input disabled type="text" class="form-control shadow-sm" id="featuredImageUrl" placeholder="Featured Image Url" asp-for="FeaturedImageUrl" />
+            <input readonly type="text" class="form-control shadow-sm" id="featuredImageUrl" placeholder="Featured Image Url" asp-for="FeaturedImageUrl" />
         </div>
         <div class="mb-3 w-100">
             <label class="form-label">Url Handle</label>
@@ -68,7 +68,10 @@
 
 @section Scripts {
     <script>
-        var editor = new FroalaEditor('#content');
+        var editor = new FroalaEditor('#content', {
+            imageUploadURL: '/api/images',
+            imageUploadParam: 'formFile',
+        });
 
         const featuredUploadElement = document.getElementById('featuredImageUpload');
         const featuredImageUrlElement = document.getElementById('featuredImageUrl');
