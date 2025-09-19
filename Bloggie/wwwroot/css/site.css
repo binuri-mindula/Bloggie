@@ -28,3 +28,7 @@ body {
 .adminTag-add-bg {
     background-color: #FFFF; /* Light gray for Home/Index */
 }
+
+.blog-details-content img{
+    max-width: 100%;
+}
