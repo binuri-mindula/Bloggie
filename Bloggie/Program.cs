@@ -1,5 +1,7 @@
+using System.Numerics;
 using Bloggie.Data;
 using Bloggie.Repositories;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;  // Add this using statement
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure; // Add this using statement
@@ -18,6 +20,7 @@ namespace Bloggie
 
             // Get the connection string from appsettings.json
             var connectionString = builder.Configuration.GetConnectionString("BloggieDbConnectionString");
+            var connectionStringAuth = builder.Configuration.GetConnectionString("BloggieAuthDbConnectionString");
 
             builder.Services.AddScoped<ITagRepository, TagRepository>();
             builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
@@ -31,6 +34,16 @@ namespace Bloggie
                 // options.UseMySql(connectionString, ServerVersion.Parse("8.0.32-mysql")); // Example MySQL 8.0.32
 
             });
+
+            builder.Services.AddDbContext<AuthDbContext>(options =>
+            {
+                options.UseMySql(connectionStringAuth, ServerVersion.AutoDetect(connectionStringAuth));
+                // Alternatively, be explicit with the version:
+                // options.UseMySql(connectionString, ServerVersion.Parse("8.0.32-mysql")); // Example MySQL 8.0.32
+
+            });
+
+            builder.Services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<AuthDbContext>();
 
             var app = builder.Build();
 
@@ -46,6 +59,7 @@ namespace Bloggie
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
