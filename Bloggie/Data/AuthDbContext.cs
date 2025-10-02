@@ -6,7 +6,7 @@ namespace Bloggie.Data
 {
     public class AuthDbContext : IdentityDbContext
     {
-        public AuthDbContext(DbContextOptions options) : base(options)
+        public AuthDbContext(DbContextOptions<AuthDbContext> options) : base(options)
         {
 
         }
@@ -25,21 +25,21 @@ namespace Bloggie.Data
                 new IdentityRole
                 {
                     Name = "Admin",
-                    NormalizedName = "Admin",
+                    NormalizedName = "ADMIN",
                     Id = adminRoleId,
                     ConcurrencyStamp = adminRoleId
                 },
                 new IdentityRole
                 {
                     Name = "SuperAdmin",
-                    NormalizedName = "SuperAdmin",
+                    NormalizedName = "SUPERADMIN",
                     Id = superAdminRoleId,
                     ConcurrencyStamp = superAdminRoleId
                 },
                 new IdentityRole
                 {
                     Name = "User",
-                    NormalizedName = "User",
+                    NormalizedName = "USER",
                     Id = userRoleId,
                     ConcurrencyStamp = userRoleId
                 },
@@ -62,7 +62,7 @@ namespace Bloggie.Data
             superAdminUser.PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(superAdminUser, "SuperAdmin@123");
 
             builder.Entity<IdentityUser>().HasData(superAdminUser);
-
+          
             //add all roles to superadminuser
             var superAdminRoles = new List<IdentityUserRole<string>>
             {
