@@ -1,0 +1,7 @@
+﻿namespace Bloggie.Repositories
+{
+    public interface IBlogPostLikeRepository
+    {
+        Task<int> GetTotalLikes(Guid blogPostId);
+    }
+}

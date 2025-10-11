@@ -25,6 +25,7 @@ namespace Bloggie
             builder.Services.AddScoped<ITagRepository, TagRepository>();
             builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
             builder.Services.AddScoped<IImageRepository, CloudinaryImageRepository>();
+            builder.Services.AddScoped<IBlogPostLikeRepository, BlogPostLikeRepository>();
 
             // Configure MySQL with Pomelo.EntityFrameworkCore.MySql
             builder.Services.AddDbContext<BloggieDbContext>(options =>
