@@ -1,0 +1,42 @@
+﻿@model Bloggie.Models.ViewModels.UserViewModel
+@{
+}
+
+<div class="py-3 bg-light border-bottom shadow-sm">
+	<div class="container">
+		<h1 class="text-center fw-bold text-primary">Users</h1>
+		<p class="text-center text-muted">Admin Functionality - Manage users easily</p>
+	</div>
+</div>
+
+<div>
+	<div class="container py-5">
+		@if (Model.Users is not null || !Model.Users.Any())
+		{
+			<table class="table">
+				<thead>
+				<tr>
+					<th>Id</th>
+					<th>UserName</th>
+					<th>Email</th>
+				</tr>
+				</thead>
+				<tbody>
+				@foreach (var user in Model.Users)
+				{
+					<tr>
+						<td>@user.Id</td>
+						<td>@user.Username</td>
+						<td>@user.EmailAddress</td>
+					</tr>
+				}
+				</tbody>
+			</table>
+		}
+		else
+		{
+			<p>No Users found!</p>
+		}
+		
+	</div>
+</div>
